@@ -1,16 +1,98 @@
 body {
     margin: 0;
+    background: #686868;
+    display: flex;
+    color: white;
+    font-family: 'Exo 2', sans-serif;
+    font-weight: 100;
+}
+
+a {
+    color: #000;
+    background-color: #ababab;
+    text-decoration: none;
+    text-shadow: -1px 1px #ababab;
+    border: 1px solid #000;
+    border-radius: 0.5em;
+    font-size: 1em;
+    font-weight: 300;
+    padding: 0.5em;
+}
+
+a:hover{
+    background-color: #6b6b6b;
+    color: #999;
+    text-shadow: -1px 1px #1c1c1c;
+}
+
+a:active{
+    background-color: #1c1c1c;
+    color: #fff;
+    text-shadow: -1px 1px #193047;
+}
+
+h1, h2 {
+    text-transform: uppercase;
+    font-weight: 100;
+}
+
+.wrapper h1{
+    font-size: 3em;
+    font-weight: 300;
+}
+.wrapper h2 {
+    font-size: 2em;
+    font-weight: 300;
+}
+
+.sidebar {
+    width: 20vw;
+    height: 100vh;
+    background-color: #242424;
+    border: 1em solid black;
+    box-sizing: border-box;
+    border-right: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+}
+
+.sidebar > div {
+    margin-top: -6em;
+}
+
+.moves, .matches {
+    display: flex;
+    flex-direction: column;
+}
+
+#moves, #matches {
+    background: transparent;
+    box-sizing: border-box;
+    display: block;
+    text-align: right;
+    background: #686868;
+    border: 0;
+    border-radius: 0.5em;
+    padding: 0.5em 0.5em 0.5em 0;
+    font-size: 1.5em;
+    width: 80px;
+    margin: 0.5em auto;
 }
 
 .board {
+    border: 1em solid black;
+    box-sizing: border-box;
     height: 100vh;
-    width: 100vw;
+    width: 80vw;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
 }
 .row {
-    height: 30vh;
+    height: 200px;
     width: auto;
     display: flex;
     flex-direction: row;
@@ -18,8 +100,6 @@ body {
 }
 
 img {
-    width: 140px;
-    height: 200px;
     border: 1px solid #000;
     border-radius: 0.5em;
 }
@@ -30,15 +110,21 @@ img {
     perspective: 1000;
 }
 
-.container:hover .card,
-.container.hover .card {
+.flip {
     -webkit-transform: rotateY(180deg);
     -moz-transform: rotateY(180deg);
     -o-transform: rotateY(180deg);
     transform: rotateY(180deg);
 }
 
-.container, .front, .back {
+.found {
+    -webkit-transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+    -o-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+}
+
+.container, .front, .back, img {
     width: 140px;
     height: 200px;
 }
@@ -79,4 +165,35 @@ img {
 
 .back {
     z-index: 2;
+}
+
+#game-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    line-height: 0.6em;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,.9);
+    display: -webkit-flex;
+    display: flex;
+    z-index: 11;
+    text-align: center;
+}
+
+#game-overlay .wrapper{
+    margin: auto;
+    padding: 0 0.5em;
+    border: 3px solid #fff;
+    background: red;
+}
+
+#game-overlay .wrapper > div {
+    margin-bottom: 3em;
+}
+
+#game-overlay .wrapper .start {
+    margin-bottom: 1.5em;
 }
